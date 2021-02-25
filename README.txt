@@ -6,6 +6,6 @@ all while collecting points for a score measured in CPS! (clicks per second).
 Press ESC to quit the game.
 
 TODO:
-add sfx
+add sfx ✓
 fix font and scaling issues
 add pulsating effect on cuboid spawn
