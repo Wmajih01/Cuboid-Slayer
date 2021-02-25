@@ -1,3 +1,6 @@
+local pressStartAU = love.audio.newSource("pressStart.wav", "stream")
+local cuboidClick = love.audio.newSource("cuboidClick.wav", "stream")
+
 local mx
 local my
 local conditional = false
@@ -68,6 +71,7 @@ local gameOver = function ()
             x3 = math.floor(love.math.random(30, 80))
             x4 = math.floor(love.math.random(30, 80))
             gameScore = 0
+            pressStartAU:play()
         end
 end
 
@@ -99,6 +103,7 @@ love.update = function(dt)
     highScoreText = "Best CPS: " .. highScore
     if conditional == true then
         rollDice()
+        cuboidClick:play()
     end
     if time < 1 then
         gameOver()
@@ -129,6 +134,7 @@ love.keypressed = function(pressed_key)
         love.event.quit()
     end
     if pressed_key == "space" and mainMenuLockout == false then
+        pressStartAU:play()
         initialization()
         mainMenuLockout = true
     end
