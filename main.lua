@@ -1,5 +1,7 @@
-local pressStartAU = love.audio.newSource("pressStart.wav", "stream")
-local cuboidClick = love.audio.newSource("cuboidClick.wav", "stream")
+love.window.setTitle("CUBOID SLAYER THE FIRST ITERATION")
+
+local pressStartAU = love.audio.newSource("audio/pressStart.wav", "stream")
+local cuboidClick = love.audio.newSource("audio/cuboidClick.wav", "stream")
 
 local mx
 local my
