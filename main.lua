@@ -1,47 +1,11 @@
 love.window.setTitle("CUBOID SLAYER THE FIRST ITERATION")
 
-local pressStartAU = love.audio.newSource("audio/pressStart.wav", "stream")
-local cuboidClick = love.audio.newSource("audio/cuboidClick.wav", "stream")
+local initialization = require("initialization")
+local rollDice = require("rollDice")
 
-local mx
-local my
-local conditional = false
-local mainMenuLockout = false
+initialization()
 
-local mainMenuText = "CUBIOD SLAYER"
-local menuHint = "Press SPACE to begin!"
-local gameScore = 0
-local highScore = 0
-local time = 31
-local timer = ""
-local allowCountDown = false
-local gameOverText = ""
-local cpsText = ""
-local retryText = ""
-local highScoreText = "Best CPS: " .. highScore
-
-local red = 1
-local blue = 1
-local green = 1
-
-local x1 = 0
-local x2 = 0
-local x3 = 0
-local x4 = 0
-
-local rollDice = function()
-    x1 = math.floor(love.math.random(0, 720))
-    x2 = math.floor(love.math.random(0, 520))
-    x3 = math.floor(love.math.random(30, 80))
-    x4 = math.floor(love.math.random(30, 80))
-    conditional = false
-    gameScore = gameScore + 1
-    red = math.random()
-    blue = math.random()
-    green = math.random()
-end
-
-local initialization = function()
+local initialization = function ()
     time = 31
     mainMenuText = ""
     menuHint = ""
@@ -49,7 +13,7 @@ local initialization = function()
     allowCountDown = true
 end
 
-local gameOver = function()
+local gameOver = function ()
     if (math.floor((gameScore / 30) * 100 + 0.5) / 100) > highScore then
         highScore = (math.floor((gameScore / 30) * 100 + 0.5) / 100)
     end
@@ -62,22 +26,22 @@ local gameOver = function()
     gameOverText = "GAME OVER"
     cpsText = "Your Clicks Per Second were " .. (math.floor((gameScore / 30) * 100 + 0.5) / 100)
     retryText = "Press ENTER to try again, or ESC to quit"
-    if love.keyboard.isDown("return") then
-        gameOverText = ""
-        cpsText = ""
-        retryText = ""
-        time = 31
-        timer = "Time left: " .. math.floor(time)
-        x1 = math.floor(love.math.random(0, 720))
-        x2 = math.floor(love.math.random(0, 520))
-        x3 = math.floor(love.math.random(30, 80))
-        x4 = math.floor(love.math.random(30, 80))
-        gameScore = 0
-        pressStartAU:play()
-    end
+        if love.keyboard.isDown("return") then
+            gameOverText = ""
+            cpsText = ""
+            retryText = ""
+            time = 31
+            timer = "Time left: " .. math.floor(time)
+            x1 = math.floor(love.math.random(0, 720))
+            x2 = math.floor(love.math.random(0, 520))
+            x3 = math.floor(love.math.random(30, 80))
+            x4 = math.floor(love.math.random(30, 80))
+            gameScore = 0
+            pressStartAU:play()
+        end
 end
 
-local mouseAlignment = function()
+local mouseAlignment = function ()
     if ((x1 < mx) and ((x1 + x3) > mx)) then
         if ((x2 < my) and ((x2 + x4) > my)) then
             if love.mouse.isDown(1) then
@@ -90,8 +54,8 @@ end
 local checkMouseConditional = function()
     mx = love.mouse.getX()
     my = love.mouse.getY()
-    -- print("X cord is " .. mx)
-    -- print("Y cord is " .. my)
+    --print("X cord is " .. mx)
+    --print("Y cord is " .. my)
 end
 
 love.update = function(dt)
@@ -113,12 +77,12 @@ love.update = function(dt)
     print(mainMenuLockout)
 end
 
-local drawRectangle = function()
+local drawRectangle = function ()
     love.graphics.setColor(red, green, blue, 10)
     love.graphics.rectangle("fill", x1, x2, x3, x4)
 end
 
-love.draw = function()
+love.draw = function ()
     love.graphics.print(mainMenuText, 170, 200, 0, 5, 5)
     love.graphics.print(menuHint, 260, 300, 0, 2, 2)
     drawRectangle()
