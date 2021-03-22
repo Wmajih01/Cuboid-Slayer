@@ -41,7 +41,7 @@ local rollDice = function()
     green = math.random()
 end
 
-local initialization = function ()
+local initialization = function()
     time = 31
     mainMenuText = ""
     menuHint = ""
@@ -49,7 +49,7 @@ local initialization = function ()
     allowCountDown = true
 end
 
-local gameOver = function ()
+local gameOver = function()
     if (math.floor((gameScore / 30) * 100 + 0.5) / 100) > highScore then
         highScore = (math.floor((gameScore / 30) * 100 + 0.5) / 100)
     end
@@ -62,22 +62,22 @@ local gameOver = function ()
     gameOverText = "GAME OVER"
     cpsText = "Your Clicks Per Second were " .. (math.floor((gameScore / 30) * 100 + 0.5) / 100)
     retryText = "Press ENTER to try again, or ESC to quit"
-        if love.keyboard.isDown("return") then
-            gameOverText = ""
-            cpsText = ""
-            retryText = ""
-            time = 31
-            timer = "Time left: " .. math.floor(time)
-            x1 = math.floor(love.math.random(0, 720))
-            x2 = math.floor(love.math.random(0, 520))
-            x3 = math.floor(love.math.random(30, 80))
-            x4 = math.floor(love.math.random(30, 80))
-            gameScore = 0
-            pressStartAU:play()
-        end
+    if love.keyboard.isDown("return") then
+        gameOverText = ""
+        cpsText = ""
+        retryText = ""
+        time = 31
+        timer = "Time left: " .. math.floor(time)
+        x1 = math.floor(love.math.random(0, 720))
+        x2 = math.floor(love.math.random(0, 520))
+        x3 = math.floor(love.math.random(30, 80))
+        x4 = math.floor(love.math.random(30, 80))
+        gameScore = 0
+        pressStartAU:play()
+    end
 end
 
-local mouseAlignment = function ()
+local mouseAlignment = function()
     if ((x1 < mx) and ((x1 + x3) > mx)) then
         if ((x2 < my) and ((x2 + x4) > my)) then
             if love.mouse.isDown(1) then
@@ -90,8 +90,8 @@ end
 local checkMouseConditional = function()
     mx = love.mouse.getX()
     my = love.mouse.getY()
-    --print("X cord is " .. mx)
-    --print("Y cord is " .. my)
+    -- print("X cord is " .. mx)
+    -- print("Y cord is " .. my)
 end
 
 love.update = function(dt)
@@ -113,12 +113,12 @@ love.update = function(dt)
     print(mainMenuLockout)
 end
 
-local drawRectangle = function ()
+local drawRectangle = function()
     love.graphics.setColor(red, green, blue, 10)
     love.graphics.rectangle("fill", x1, x2, x3, x4)
 end
 
-love.draw = function ()
+love.draw = function()
     love.graphics.print(mainMenuText, 170, 200, 0, 5, 5)
     love.graphics.print(menuHint, 260, 300, 0, 2, 2)
     drawRectangle()
