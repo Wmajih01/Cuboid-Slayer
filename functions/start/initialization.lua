@@ -1,5 +1,6 @@
-return function ()
-    
+-- Here are the main variables responsible for making the game's fundamentals work
+return function()
+
     pressStartAU = love.audio.newSource("audio/pressStart.wav", "stream")
     cuboidClick = love.audio.newSource("audio/cuboidClick.wav", "stream")
 

@@ -1,3 +1,4 @@
+-- variables that get updated once a "cube" has been clicked on
 return function()
     x1 = math.floor(love.math.random(0, 720))
     x2 = math.floor(love.math.random(0, 520))

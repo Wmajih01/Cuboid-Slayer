@@ -1,65 +1,17 @@
 love.window.setTitle("CUBOID SLAYER THE FIRST ITERATION")
 
-local initialization = require("initialization")
-local rollDice = require("rollDice")
+local initialization = require("functions/start/initialization")
+local startGame = require("functions/start/startGame")
+local drawObjectsList = require("functions/start/drawObjects")
+local rollDice = require("functions/poststart/rollDice")
+local mouseAlignment = require("functions/poststart/mouseAlignment")
+local getMousePos = require("functions/poststart/getMousePos")
+local gameOver = require("functions/gameover/gameOver")
 
 initialization()
 
-local initialization = function ()
-    time = 31
-    mainMenuText = ""
-    menuHint = ""
-    rollDice()
-    allowCountDown = true
-end
-
-local gameOver = function ()
-    if (math.floor((gameScore / 30) * 100 + 0.5) / 100) > highScore then
-        highScore = (math.floor((gameScore / 30) * 100 + 0.5) / 100)
-    end
-    x1 = 0
-    x2 = 0
-    x3 = 0
-    x4 = 0
-    conditional = false
-    timer = "Time left: 0"
-    gameOverText = "GAME OVER"
-    cpsText = "Your Clicks Per Second were " .. (math.floor((gameScore / 30) * 100 + 0.5) / 100)
-    retryText = "Press ENTER to try again, or ESC to quit"
-        if love.keyboard.isDown("return") then
-            gameOverText = ""
-            cpsText = ""
-            retryText = ""
-            time = 31
-            timer = "Time left: " .. math.floor(time)
-            x1 = math.floor(love.math.random(0, 720))
-            x2 = math.floor(love.math.random(0, 520))
-            x3 = math.floor(love.math.random(30, 80))
-            x4 = math.floor(love.math.random(30, 80))
-            gameScore = 0
-            pressStartAU:play()
-        end
-end
-
-local mouseAlignment = function ()
-    if ((x1 < mx) and ((x1 + x3) > mx)) then
-        if ((x2 < my) and ((x2 + x4) > my)) then
-            if love.mouse.isDown(1) then
-                conditional = true
-            end
-        end
-    end
-end
-
-local checkMouseConditional = function()
-    mx = love.mouse.getX()
-    my = love.mouse.getY()
-    --print("X cord is " .. mx)
-    --print("Y cord is " .. my)
-end
-
 love.update = function(dt)
-    checkMouseConditional()
+    getMousePos()
     if allowCountDown == true then
         time = time - dt
     end
@@ -77,15 +29,10 @@ love.update = function(dt)
     print(mainMenuLockout)
 end
 
-local drawRectangle = function ()
-    love.graphics.setColor(red, green, blue, 10)
-    love.graphics.rectangle("fill", x1, x2, x3, x4)
-end
-
-love.draw = function ()
+love.draw = function()
     love.graphics.print(mainMenuText, 170, 200, 0, 5, 5)
     love.graphics.print(menuHint, 260, 300, 0, 2, 2)
-    drawRectangle()
+    drawObjectsList.drawRectangle()
     love.graphics.setColor(1, 1, 1, 1)
     love.graphics.print(timer, 0, 0, 0, 2, 2)
     love.graphics.print(gameScore, 765, 0, 0, 2, 2)
@@ -101,7 +48,7 @@ love.keypressed = function(pressed_key)
     end
     if pressed_key == "space" and mainMenuLockout == false then
         pressStartAU:play()
-        initialization()
+        startGame()
         mainMenuLockout = true
     end
 end

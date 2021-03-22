@@ -25,6 +25,7 @@
         "highScoreText",
         "red",
         "blue",
-        "green"
+        "green",
+        "drawObjectsList"
     ]
 }
