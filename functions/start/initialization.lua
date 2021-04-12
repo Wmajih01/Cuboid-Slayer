@@ -14,6 +14,7 @@ return function()
 
     mainMenuText = "CUBIOD SLAYER"
     menuHint = "Press SPACE to begin!"
+    menuArrows = "< Instructions    Credits >"
     gameScore = 0
     highScore = 0
     time = 31

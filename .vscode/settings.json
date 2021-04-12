@@ -27,6 +27,8 @@
         "blue",
         "green",
         "drawObjectsList",
-        "menuAU"
+        "menuAU",
+        "font",
+        "fontVariable"
     ]
 }

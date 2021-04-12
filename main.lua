@@ -34,8 +34,9 @@ end
 
 love.draw = function()
     love.graphics.setFont(fontVariable)
-    love.graphics.print(mainMenuText, 170, 200, 0, 1, 1)
-    love.graphics.print(menuHint, 260, 300, 0, 1, 1)
+    love.graphics.print(menuArrows, 130, 400, 0, 1, 1)
+    love.graphics.print(mainMenuText, 270, 200, 0, 1, 1)
+    love.graphics.print(menuHint, 200, 300, 0, 1, 1)
     drawObjectsList.drawRectangle()
     love.graphics.setColor(1, 1, 1, 1)
     font = love.graphics.setNewFont(15)
