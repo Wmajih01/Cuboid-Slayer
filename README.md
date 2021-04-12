@@ -10,4 +10,4 @@ Press `ESC` to quit the game.
 TODO:
 - add sfx ✓
 - fix font and scaling issues
-- add pulsating effect on cuboid spawn
+- add menu

@@ -26,6 +26,7 @@
         "red",
         "blue",
         "green",
-        "drawObjectsList"
+        "drawObjectsList",
+        "menuAU"
     ]
 }

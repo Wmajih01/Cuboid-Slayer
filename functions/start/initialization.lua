@@ -3,11 +3,14 @@ return function()
 
     pressStartAU = love.audio.newSource("audio/pressStart.wav", "stream")
     cuboidClick = love.audio.newSource("audio/cuboidClick.wav", "stream")
+    menuAU = love.audio.newSource("audio/menu.wav", "stream")
 
     mx = 0
     my = 0
     conditional = false
     mainMenuLockout = false
+
+    fontVariable = love.graphics.newFont("font/atari.ttf", 20)
 
     mainMenuText = "CUBIOD SLAYER"
     menuHint = "Press SPACE to begin!"

@@ -17,6 +17,9 @@ love.update = function(dt)
     end
     if mainMenuLockout == true then
         timer = "Time left: " .. math.floor(time)
+    elseif mainMenuLockout == false then
+        menuAU:play()
+        menuAU:setVolume(0.5)
     end
     highScoreText = "Best CPS: " .. highScore
     if conditional == true then
@@ -30,16 +33,18 @@ love.update = function(dt)
 end
 
 love.draw = function()
-    love.graphics.print(mainMenuText, 170, 200, 0, 5, 5)
-    love.graphics.print(menuHint, 260, 300, 0, 2, 2)
+    love.graphics.setFont(fontVariable)
+    love.graphics.print(mainMenuText, 170, 200, 0, 1, 1)
+    love.graphics.print(menuHint, 260, 300, 0, 1, 1)
     drawObjectsList.drawRectangle()
     love.graphics.setColor(1, 1, 1, 1)
-    love.graphics.print(timer, 0, 0, 0, 2, 2)
-    love.graphics.print(gameScore, 765, 0, 0, 2, 2)
+    font = love.graphics.setNewFont(15)
+    love.graphics.print(timer, 0, 0, 0, 1, 1)
+    love.graphics.print(gameScore, 765, 0, 0, 1, 1)
     love.graphics.print(highScoreText, 700, 30, 0, 1, 1)
-    love.graphics.print(gameOverText, 220, 200, 0, 5, 5)
-    love.graphics.print(cpsText, 220, 270, 0, 2, 2)
-    love.graphics.print(retryText, 220, 300, 0, 2, 2)
+    love.graphics.print(gameOverText, 220, 200, 0, 1, 1)
+    love.graphics.print(cpsText, 220, 270, 0, 1, 1)
+    love.graphics.print(retryText, 220, 300, 0, 1, 1)
 end
 
 love.keypressed = function(pressed_key)
@@ -49,6 +54,7 @@ love.keypressed = function(pressed_key)
     if pressed_key == "space" and mainMenuLockout == false then
         pressStartAU:play()
         startGame()
+        menuAU:stop()
         mainMenuLockout = true
     end
 end
