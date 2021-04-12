@@ -5,16 +5,25 @@ return function()
     cuboidClick = love.audio.newSource("audio/cuboidClick.wav", "stream")
     menuAU = love.audio.newSource("audio/menu.wav", "stream")
 
+    startupSequence = true
+
     mx = 0
     my = 0
     conditional = false
     mainMenuLockout = false
+    waiting = true
+    waitingTime = 0
 
     fontVariable = love.graphics.newFont("font/atari.ttf", 20)
 
-    mainMenuText = "CUBIOD SLAYER"
-    menuHint = "Press SPACE to begin!"
-    menuArrows = "< Instructions    Credits >"
+    mainMenuText = "CUBOID SLAYER"
+    menuHint = ""
+    menuArrows = ""
+    textA = ""
+    textD = ""
+    allowDisplayMenu = true
+    pressedA = false
+    pressedD = false
     gameScore = 0
     highScore = 0
     time = 31
@@ -23,7 +32,7 @@ return function()
     gameOverText = ""
     cpsText = ""
     retryText = ""
-    highScoreText = "Best CPS: " .. highScore
+    highScoreText = ""
 
     red = 1
     blue = 1

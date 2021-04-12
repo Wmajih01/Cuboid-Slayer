@@ -29,6 +29,18 @@
         "drawObjectsList",
         "menuAU",
         "font",
-        "fontVariable"
+        "fontVariable",
+        "menuArrows",
+        "waiting",
+        "waitingTime",
+        "allowDisplayMenu",
+        "pressedA",
+        "pressedD",
+        "blinkTime",
+        "infiniteTimer",
+        "textA",
+        "textD",
+        "startupSequence",
+        "menuButtons"
     ]
 }
