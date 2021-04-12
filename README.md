@@ -6,6 +6,8 @@ all while collecting points for a score measured in CPS! (clicks per second).
 
 Press `ESC` to quit the game.
 
+![alt text](https://github.com/Wmajih01/Cuboid-Slayer/blob/main/screenshots/menu.png?raw=true)
+![alt text](https://github.com/Wmajih01/Cuboid-Slayer/blob/main/screenshots/ingame.png?raw=true)
 
 TODO:
 - add sfx ✓
